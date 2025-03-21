@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPEN ORDER LEMANG RAYA 2025 (JABAR LEMANG BAKAR)</title>
+    <style>
+        :root {
+            --primary-green: #2E7D32;
+            --secondary-green: #4CAF50;
+            --light-green: #A5D6A7;
+            --light-yellow: #FFF9C4;
+            --yellow: #FBC02D;
+            --brown: #795548;
+            --light-brown: #D7CCC8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-yellow);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary-green);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before, header::after {
+            content: "🎋";
+            font-size: 24px;
+            position: absolute;
+            top: 20px;
+        }
+        
+        header::before {
+            left: 20px;
+        }
+        
+        header::after {
+            right: 20px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            background-color: var(--secondary-green);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 20px;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-green);
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--brown);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--light-brown);
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .product-card {
+            background-color: var(--light-green);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .product-title {
+            font-weight: 600;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .product-icon {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .product-options {
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .size-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--light-brown);
+        }
+        
+        .size-option:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            margin: 0 5px;
+        }
+        
+        .btn-quantity {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .radio-group {
+            margin-top: 10px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .radio-option input {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .cta-button {
+            background-color: var(--yellow);
+            color: var(--brown);
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #F57F17;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .reminder {
+            text-align: center;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        
+        .flavors {
+            margin-bottom: 15px;
+        }
+        
+        .flavor-selector {
+            margin-bottom: 10px;
+        }
+        
+        .flavor-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-green);
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            .product-options {
+                padding: 8px;
+            }
+            
+            .size-option {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .size-price {
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>OPEN ORDER LEMANG RAYA 2025</h1>
+            <h2>JABAR LEMANG BAKAR</h2>
+        </header>
+        
+        <div class="description">
+            Atas permintaan ramai, Jabar Lemang Bakar telah buka order. Yang ingin membuat tempahan raya nanti boleh order sekarang!!!
+        </div>
+        
+        <form id="orderForm" class="form-container">
+            <!-- Personal Information Section -->
+            <div class="form-group">
+                <label for="name">Nama Penuh:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Nombor Telefon (WhatsApp):</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <!-- Product Selection Section -->
+            <h3 class="section-title">
+                <span class="product-icon">🎋</span> Pilihan & Harga Lemang
+            </h3>
+            
+            <!-- Lemang Options -->
+            <div class="product-card">
+                <div class="flavors">
+                    <!-- Biasa Lemang -->
+                    <div class="flavor-selector">
+                        <div class="flavor-title">Lemang Biasa</div>
+                        <div class="product-options">
+                            <div class="size-option">
+                                <div class="size-price">XS - RM18</div>
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-quantity" onclick="decrementQuantity('biasaXs')">-</button>
+                                    <input type="number" id="biasaXs" class="quantity-input" value="0" min="0">
+                                    <button type="button" class="btn-quantity" onclick="incrementQuantity('biasaXs')">+</button>
+                                </div>
+                            </div>
+                            <div class="size-option">
+                                <div class="size-price">S - RM20</div>
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-quantity" onclick="decrementQuantity('biasaS')">-</button>
+                                    <input type="number" id="biasaS" class="quantity-input" value="0" min="0">
+                                    <button type="button" class="btn-quantity" onclick="incrementQuantity('biasaS')">+</button>
+                                </div>
+                            </div>
+                            <div class="size-option">
+                                <div class="size-price">M - RM22</div>
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-quantity" onclick="decrementQuantity('biasaM')">-</button>
+                                    <input type="number" id="biasaM" class="quantity-input" value="0" min="0">
+                                    <button type="button" class="btn-quantity" onclick="incrementQuantity('biasaM')">+</button>
+                                </div>
+                            </div>
+                            <div class="size-option">
+                                <div class="size-price">XL - RM25</div>
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-quantity" onclick="decrementQuantity('biasaXl')">-</button>
+                                    <input type="number" id="biasaXl" class="quantity-input" value="0" min="0">
+                                    <button type="button" class="btn-quantity" onclick="incrementQuantity('biasaXl')">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Jagung Lemang -->
+                    <div class="flavor-selector">
+                        <div class="flavor-title">Lemang Jagung</div>
+                        <div class="product-options">
+                            <div class="size-option">
+                                <div class="size-price">XS - RM18</div>
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-quantity" onclick="decrementQuantity('jagungXs')">-</button>
+                                    <input type="number" id="jagungXs" class="quantity-input" value="0" min="0">
+                                    <button type="button" class="btn-quantity" onclick="incrementQuantity('jagungXs')">+</button>
+                                </div>
+                            </div>
+                            <div class="size-option">
+                                <div class="size-price">S - RM20</div>
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-quantity" onclick="decrementQuantity('jagungS')">-</button>
+                                    <input type="number" id="jagungS" class="quantity-input" value="0" min="0">
+                                    <button type="button" class="btn-quantity" onclick="incrementQuantity('jagungS')">+</button>
+                                </div>
+                            </div>
+                            <div class="size-option">
+                                <div class="size-price">M - RM22</div>
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-quantity" onclick="decrementQuantity('jagungM')">-</button>
+                                    <input type="number" id="jagungM" class="quantity-input" value="0" min="0">
+                                    <button type="button" class="btn-quantity" onclick="incrementQuantity('jagungM')">+</button>
+                                </div>
+                            </div>
+                            <div class="size-option">
+                                <div class="size-price">XL - RM25</div>
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-quantity" onclick="decrementQuantity('jagungXl')">-</button>
+                                    <input type="number" id="jagungXl" class="quantity-input" value="0" min="0">
+                                    <button type="button" class="btn-quantity" onclick="incrementQuantity('jagungXl')">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pulut Hitam Lemang -->
+                    <div class="flavor-selector">
+                        <div class="flavor-title">Lemang Pulut Hitam</div>
+                        <div class="product-options">
+                            <div class="size-option">
+                                <div class="size-price">XS - RM18</div>
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-quantity" onclick="decrementQuantity('hitamXs')">-</button>
+                                    <input type="number" id="hitamXs" class="quantity-input" value="0" min="0">
+                                    <button type="button" class="btn-quantity" onclick="incrementQuantity('hitamXs')">+</button>
+                                </div>
+                            </div>
+                            <div class="size-option">
+                                <div class="size-price">S - RM20</div>
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-quantity" onclick="decrementQuantity('hitamS')">-</button>
+                                    <input type="number" id="hitamS" class="quantity-input" value="0" min="0">
+                                    <button type="button" class="btn-quantity" onclick="incrementQuantity('hitamS')">+</button>
+                                </div>
+                            </div>
+                            <div class="size-option">
+                                <div class="size-price">M - RM22</div>
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-quantity" onclick="decrementQuantity('hitamM')">-</button>
+                                    <input type="number" id="hitamM" class="quantity-input" value="0" min="0">
+                                    <button type="button" class="btn-quantity" onclick="incrementQuantity('hitamM')">+</button>
+                                </div>
+                            </div>
+                            <div class="size-option">
+                                <div class="size-price">XL - RM25</div>
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-quantity" onclick="decrementQuantity('hitamXl')">-</button>
+                                    <input type="number" id="hitamXl" class="quantity-input" value="0" min="0">
+                                    <button type="button" class="btn-quantity" onclick="incrementQuantity('hitamXl')">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rendang Ayam Section -->
+            <h3 class="section-title">
+                <span class="product-icon">🐔</span> Rendang Ayam
+            </h3>
+            
+            <div class="product-card">
+                <div class="product-options">
+                    <div class="size-option">
+                        <div class="size-price">RM60 - 1½Kg (anggaran 1 Ekor)</div>
+                        <div class="quantity-control">
+                            <button type="button" class="btn-quantity" onclick="decrementQuantity('ayamFull')">-</button>
+                            <input type="number" id="ayamFull" class="quantity-input" value="0" min="0">
+                            <button type="button" class="btn-quantity" onclick="incrementQuantity('ayamFull')">+</button>
+                        </div>
+                    </div>
+                    <div class="size-option">
+                        <div class="size-price">RM30 - 750g (anggaran ½ Ekor)</div>
+                        <div class="quantity-control">
+                            <button type="button" class="btn-quantity" onclick="decrementQuantity('ayamHalf')">-</button>
+                            <input type="number" id="ayamHalf" class="quantity-input" value="0" min="0">
+                            <button type="button" class="btn-quantity" onclick="incrementQuantity('ayamHalf')">+</button>
+                        </div>
+                    </div>
+                    <div class="size-option">
+                        <div class="size-price">RM10 - Bekas kecil</div>
+                        <div class="quantity-control">
+                            <button type="button" class="btn-quantity" onclick="decrementQuantity('ayamSmall')">-</button>
+                            <input type="number" id="ayamSmall" class="quantity-input" value="0" min="0">
+                            <button type="button" class="btn-quantity" onclick="incrementQuantity('ayamSmall')">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rendang Daging Section -->
+            <h3 class="section-title">
+                <span class="product-icon">🐂</span> Rendang Daging
+            </h3>
+            
+            <div class="product-card">
+                <div class="product-options">
+                    <div class="size-option">
+                        <div class="size-price">RM60 - 1Kg</div>
+                        <div class="quantity-control">
+                            <button type="button" class="btn-quantity" onclick="decrementQuantity('dagingFull')">-</button>
+                            <input type="number" id="dagingFull" class="quantity-input" value="0" min="0">
+                            <button type="button" class="btn-quantity" onclick="incrementQuantity('dagingFull')">+</button>
+                        </div>
+                    </div>
+                    <div class="size-option">
+                        <div class="size-price">RM30 - ½Kg</div>
+                        <div class="quantity-control">
+                            <button type="button" class="btn-quantity" onclick="decrementQuantity('dagingHalf')">-</button>
+                            <input type="number" id="dagingHalf" class="quantity-input" value="0" min="0">
+                            <button type="button" class="btn-quantity" onclick="incrementQuantity('dagingHalf')">+</button>
+                        </div>
+                    </div>
+                    <div class="size-option">
+                        <div class="size-price">RM10 - Bekas kecil</div>
+                        <div class="quantity-control">
+                            <button type="button" class="btn-quantity" onclick="decrementQuantity('dagingSmall')">-</button>
+                            <input type="number" id="dagingSmall" class="quantity-input" value="0" min="0">
+                            <button type="button" class="btn-quantity" onclick="incrementQuantity('dagingSmall')">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Delivery Section -->
+            <h3 class="section-title">
+                <span class="product-icon">🚚</span> Penghantaran / Pickup
+            </h3>
+            
+            <div class="form-group">
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="pickup" name="delivery" value="pickup" checked onclick="toggleAddressField()">
+                        <label for="pickup">Pickup di Kg Kubang Tuman (hari buat ketupat - sehari sebelum raya)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="cod" name="delivery" value="cod" onclick="toggleAddressField()">
+                        <label for="cod">COD sekitar Kota Bharu & kawasan berdekatan (Cas COD mengikut kawasan)</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="addressField" class="form-group hidden">
+                <label for="address">Alamat Penghantaran:</label>
+                <textarea id="address" name="address" rows="3"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="date">Tarikh Pilihan Ambil / COD:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="notes">Nota Tambahan (optional):</label>
+                <textarea id="notes" name="notes" rows="3"></textarea>
+            </div>
+            
+            <!-- CTA Button -->
+            <button type="button" class="cta-button" onclick="submitOrder()">
+                Hantar Order ke WhatsApp
+            </button>
+        </form>
+        
+        <div class="reminder">
+            ✅ Jadi tunggu apa lagi, order sekarang sebelum slot 2025 ditutup 🚧
+        </div>
+    </div>
+    
+    <script>
+        function incrementQuantity(id) {
+            const input = document.getElementById(id);
+            input.value = parseInt(input.value) + 1;
+        }
+        
+        function decrementQuantity(id) {
+            const input = document.getElementById(id);
+            if (parseInt(input.value) > 0) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+        
+        function toggleAddressField() {
+            const addressField = document.getElementById('addressField');
+            const deliveryMethod = document.querySelector('input[name="delivery"]:checked').value;
+            
+            if (deliveryMethod === 'cod') {
+                addressField.classList.remove('hidden');
+                document.getElementById('address').setAttribute('required', 'required');
+            } else {
+                addressField.classList.add('hidden');
+                document.getElementById('address').removeAttribute('required');
+            }
+        }
+        
+        function submitOrder() {
+            const form = document.getElementById('orderForm');
+            
+            // Basic validation
+            if (!form.checkValidity()) {
+                alert('Sila lengkapkan semua maklumat yang diperlukan');
+                return;
+            }
+            
+            // Collect form data
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const deliveryMethod = document.querySelector('input[name="delivery"]:checked').value;
+            const address = deliveryMethod === 'cod' ? document.getElementById('address').value : 'Pickup';
+            const date = document.getElementById('date').value;
+            const notes = document.getElementById('notes').value;
+            
+            // Collect lemang orders
+            let lemangBiasa = [];
+            if (parseInt(document.getElementById('biasaXs').value) > 0) {
+                lemangBiasa.push(`XS x${document.getElementById('biasaXs').value}`);
+            }
+            if (parseInt(document.getElementById('biasaS').value) > 0) {
+                lemangBiasa.push(`S x${document.getElementById('biasaS').value}`);
+            }
+            if (parseInt(document.getElementById('biasaM').value) > 0) {
+                lemangBiasa.push(`M x${document.getElementById('biasaM').value}`);
+            }
+            if (parseInt(document.getElementById('biasaXl').value) > 0) {
+                lemangBiasa.push(`XL x${document.getElementById('biasaXl').value}`);
+            }
+            
+            let lemangJagung = [];
+            if (parseInt(document.getElementById('jagungXs').value) > 0) {
+                lemangJagung.push(`XS x${document.getElementById('jagungXs').value}`);
+            }
+            if (parseInt(document.getElementById('jagungS').value) > 0) {
+                lemangJagung.push(`S x${document.getElementById('jagungS').value}`);
+            }
+            if (parseInt(document.getElementById('jagungM').value) > 0) {
+                lemangJagung.push(`M x${document.getElementById('jagungM').value}`);
+            }
+            if (parseInt(document.getElementById('jagungXl').value) > 0) {
+                lemangJagung.push(`XL x${document.getElementById('jagungXl').value}`);
+            }
+            
+            let lemangHitam = [];
+            if (parseInt(document.getElementById('hitamXs').value) > 0) {
+                lemangHitam.push(`XS x${document.getElementById('hitamXs').value}`);
+            }
+            if (parseInt(document.getElementById('hitamS').value) > 0) {
+                lemangHitam.push(`S x${document.getElementById('hitamS').value}`);
+            }
+            if (parseInt(document.getElementById('hitamM').value) > 0) {
+                lemangHitam.push(`M x${document.getElementById('hitamM').value}`);
+            }
+            if (parseInt(document.getElementById('hitamXl').value) > 0) {
+                lemangHitam.push(`XL x${document.getElementById('hitamXl').value}`);
+            }
+            
+            // Collect rendang ayam orders
+            let rendangAyam = [];
+            if (parseInt(document.getElementById('ayamFull').value) > 0) {
+                rendangAyam.push(`1½Kg (1 Ekor) x${document.getElementById('ayamFull').value}`);
+            }
+            if (parseInt(document.getElementById('ayamHalf').value) > 0) {
+                rendangAyam.push(`750g (½ Ekor) x${document.getElementById('ayamHalf').value}`);
+            }
+            if (parseInt(document.getElementById('ayamSmall').value) > 0) {
+                rendangAyam.push(`Bekas kecil x${document.getElementById('ayamSmall').value}`);
+            }
+            
+            // Collect rendang daging orders
+            let rendangDaging = [];
+            if (parseInt(document.getElementById('dagingFull').value) > 0) {
+                rendangDaging.push(`1Kg x${document.getElementById('dagingFull').value}`);
+            }
+            if (parseInt(document.getElementById('dagingHalf').value) > 0) {
+                rendangDaging.push(`½Kg x${document.getElementById('dagingHalf').value}`);
+            }
+            if (parseInt(document.getElementById('dagingSmall').value) > 0) {
+                rendangDaging.push(`Bekas kecil x${document.getElementById('dagingSmall').value}`);
+            }
+            
+            // Generate WhatsApp message
+            let message = `Tempahan LEMANG RAYA 2025 (JABAR LEMANG BAKAR)\n\n`;
+            message += `Nama: ${name}\n`;
+            message += `No Telefon: ${phone}\n\n`;
+            
+            // Add lemang details
+            message += `Pilihan Lemang:\n`;
+            if (lemangBiasa.length > 0) {
+                message += `- Biasa: ${lemangBiasa.join(', ')}\n`;
+            }
+            if (lemangJagung.length > 0) {
+                message += `- Jagung: ${lemangJagung.join(', ')}\n`;
+            }
+            if (lemangHitam.length > 0) {
+                message += `- Pulut Hitam: ${lemangHitam.join(', ')}\n`;
+            }
+            
+            // Add rendang ayam details
+            if (rendangAyam.length > 0) {
+                message += `\nRendang Ayam:\n`;
+                rendangAyam.forEach(item => {
+                    message += `- ${item}\n`;
+                });
+            }
+            
+            // Add rendang daging details
+            if (rendangDaging.length > 0) {
+                message += `\nRendang Daging:\n`;
+                rendangDaging.forEach(item => {
+                    message += `- ${item}\n`;
+                });
+            }
+            
+            // Add delivery and additional information
+            message += `\nPenghantaran: ${deliveryMethod === 'cod' ? 'COD' : 'Pickup'}\n`;
+            if (deliveryMethod === 'cod') {
+                message += `Alamat: ${address}\n`;
+            }
+            message += `Tarikh Pilihan: ${date}\n`;
+            if (notes) {
+                message += `Catatan Tambahan: ${notes}\n`;
+            }
+            
+            // Encode message for WhatsApp
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/60199778182?text=${encodedMessage}`;
+            
+            // Redirect to WhatsApp
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+                                  </html>
