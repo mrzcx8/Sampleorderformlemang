@@ -13,6 +13,7 @@
             --yellow: #FBC02D;
             --brown: #795548;
             --light-brown: #D7CCC8;
+            --accent-orange: #FF8F00;
         }
         
         * {
@@ -231,6 +232,36 @@
             border-radius: 10px;
             margin-top: 20px;
             font-weight: 600;
+        }
+        
+        .total-section {
+            background-color: var(--light-yellow);
+            border: 2px dashed var(--accent-orange);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .total-title {
+            color: var(--brown);
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .total-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-orange);
+            text-align: center;
+        }
+        
+        .subtotal-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
         }
         
         .flavors {
@@ -526,6 +557,15 @@
                 <textarea id="notes" name="notes" rows="3"></textarea>
             </div>
             
+            <!-- Total Section -->
+            <div class="total-section">
+                <div class="total-title">Jumlah Pesanan Anda</div>
+                <div id="subtotal-details">
+                    <!-- Subtotals will be displayed here -->
+                </div>
+                <div class="total-price" id="total-price">RM0.00</div>
+            </div>
+            
             <!-- CTA Button -->
             <button type="button" class="cta-button" onclick="submitOrder()">
                 Hantar Order ke WhatsApp
@@ -538,16 +578,97 @@
     </div>
     
     <script>
+        // Product prices
+        const prices = {
+            // Lemang Biasa
+            'biasaXs': 18,
+            'biasaS': 20,
+            'biasaM': 22,
+            'biasaXl': 25,
+            // Lemang Jagung
+            'jagungXs': 18,
+            'jagungS': 20,
+            'jagungM': 22,
+            'jagungXl': 25,
+            // Lemang Pulut Hitam
+            'hitamXs': 18,
+            'hitamS': 20,
+            'hitamM': 22,
+            'hitamXl': 25,
+            // Rendang Ayam
+            'ayamFull': 60,
+            'ayamHalf': 30,
+            'ayamSmall': 10,
+            // Rendang Daging
+            'dagingFull': 60,
+            'dagingHalf': 30,
+            'dagingSmall': 10
+        };
+        
+        // Product display names
+        const productNames = {
+            // Lemang Biasa
+            'biasaXs': 'Lemang Biasa XS',
+            'biasaS': 'Lemang Biasa S',
+            'biasaM': 'Lemang Biasa M',
+            'biasaXl': 'Lemang Biasa XL',
+            // Lemang Jagung
+            'jagungXs': 'Lemang Jagung XS',
+            'jagungS': 'Lemang Jagung S',
+            'jagungM': 'Lemang Jagung M',
+            'jagungXl': 'Lemang Jagung XL',
+            // Lemang Pulut Hitam
+            'hitamXs': 'Lemang Pulut Hitam XS',
+            'hitamS': 'Lemang Pulut Hitam S',
+            'hitamM': 'Lemang Pulut Hitam M',
+            'hitamXl': 'Lemang Pulut Hitam XL',
+            // Rendang Ayam
+            'ayamFull': 'Rendang Ayam 1½Kg',
+            'ayamHalf': 'Rendang Ayam 750g',
+            'ayamSmall': 'Rendang Ayam Bekas Kecil',
+            // Rendang Daging
+            'dagingFull': 'Rendang Daging 1Kg',
+            'dagingHalf': 'Rendang Daging ½Kg',
+            'dagingSmall': 'Rendang Daging Bekas Kecil'
+        };
+        
         function incrementQuantity(id) {
             const input = document.getElementById(id);
             input.value = parseInt(input.value) + 1;
+            calculateTotal();
         }
         
         function decrementQuantity(id) {
             const input = document.getElementById(id);
             if (parseInt(input.value) > 0) {
                 input.value = parseInt(input.value) - 1;
+                calculateTotal();
             }
+        }
+        
+        // Calculate total price
+        function calculateTotal() {
+            let total = 0;
+            let subtotalDetails = '';
+            
+            // Loop through all products
+            for (const [id, price] of Object.entries(prices)) {
+                const quantity = parseInt(document.getElementById(id).value);
+                if (quantity > 0) {
+                    const subtotal = quantity * price;
+                    total += subtotal;
+                    
+                    // Add to subtotal details
+                    subtotalDetails += `<div class="subtotal-item">
+                        <div>${productNames[id]} × ${quantity}</div>
+                        <div>RM${subtotal.toFixed(2)}</div>
+                    </div>`;
+                }
+            }
+            
+            // Update the DOM
+            document.getElementById('subtotal-details').innerHTML = subtotalDetails;
+            document.getElementById('total-price').innerText = `RM${total.toFixed(2)}`;
         }
         
         function toggleAddressField() {
@@ -563,12 +684,86 @@
             }
         }
         
+        // Calculate total price
+        function calculateTotal() {
+            let total = 0;
+            let subtotalDetails = '';
+            let hasItems = false;
+            
+            // Group by categories
+            const categories = {
+                'Lemang Biasa': ['biasaXs', 'biasaS', 'biasaM', 'biasaXl'],
+                'Lemang Jagung': ['jagungXs', 'jagungS', 'jagungM', 'jagungXl'],
+                'Lemang Pulut Hitam': ['hitamXs', 'hitamS', 'hitamM', 'hitamXl'],
+                'Rendang Ayam': ['ayamFull', 'ayamHalf', 'ayamSmall'],
+                'Rendang Daging': ['dagingFull', 'dagingHalf', 'dagingSmall']
+            };
+            
+            // Process each category
+            for (const [category, items] of Object.entries(categories)) {
+                let categoryTotal = 0;
+                let categoryHasItems = false;
+                let categoryDetails = '';
+                
+                // Calculate items in this category
+                for (const id of items) {
+                    const quantity = parseInt(document.getElementById(id).value);
+                    if (quantity > 0) {
+                        const price = prices[id];
+                        const subtotal = quantity * price;
+                        categoryTotal += subtotal;
+                        hasItems = true;
+                        categoryHasItems = true;
+                        
+                        // Size label extraction
+                        let size = '';
+                        if (id.includes('Xs')) size = 'XS';
+                        else if (id.includes('Xl')) size = 'XL';
+                        else size = id.slice(-1).toUpperCase();
+                        
+                        categoryDetails += `<div class="subtotal-item">
+                            <div>&nbsp;&nbsp;${size} × ${quantity}</div>
+                            <div>RM${subtotal.toFixed(2)}</div>
+                        </div>`;
+                    }
+                }
+                
+                // Add category heading if it has items
+                if (categoryHasItems) {
+                    subtotalDetails += `<div class="subtotal-item" style="font-weight: 600; margin-top: 5px;">
+                        <div>${category}</div>
+                        <div>RM${categoryTotal.toFixed(2)}</div>
+                    </div>`;
+                    subtotalDetails += categoryDetails;
+                    total += categoryTotal;
+                }
+            }
+            
+            // If no items, show message
+            if (!hasItems) {
+                subtotalDetails = '<div class="subtotal-item" style="justify-content: center;">Tiada item dipilih</div>';
+            }
+            
+            // Update the DOM
+            document.getElementById('subtotal-details').innerHTML = subtotalDetails;
+            document.getElementById('total-price').innerText = `RM${total.toFixed(2)}`;
+            
+            return total;
+        }
+        
         function submitOrder() {
             const form = document.getElementById('orderForm');
             
             // Basic validation
             if (!form.checkValidity()) {
                 alert('Sila lengkapkan semua maklumat yang diperlukan');
+                return;
+            }
+            
+            // Check if any product is selected
+            const totalAmount = calculateTotal();
+            if (totalAmount <= 0) {
+                alert('Sila pilih sekurang-kurangnya satu item untuk dipesan');
                 return;
             }
             
@@ -690,13 +885,16 @@
                 message += `Catatan Tambahan: ${notes}\n`;
             }
             
+            // Add total price
+            message += `\nJumlah Harga: RM${calculateTotal().toFixed(2)}`;
+            
             // Encode message for WhatsApp
             const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/60199778182?text=${encodedMessage}`;
+            const whatsappUrl = `https://wa.me/601169887631?text=${encodedMessage}`;
             
             // Redirect to WhatsApp
             window.open(whatsappUrl, '_blank');
         }
     </script>
 </body>
-                                  </html>
+</html>
